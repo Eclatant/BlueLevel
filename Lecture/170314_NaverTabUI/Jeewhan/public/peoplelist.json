@@ -1,0 +1,57 @@
+[
+	{
+		"title" : "유시민",
+		"imgurl" : "http://cfs11.tistory.com/original/4/tistory/2009/06/08/20/05/4a2cf06e69a14",
+		"peoplelist" : [
+				"유시민 (柳時敏)",
+				"1959년 7월 28일",
+				"대한민국 경상북도 월성군 내남면",
+				"마인츠대학교 대학원 경제학 석사",
+				"정의당"
+		]
+	},
+	{
+		"title" : "문재인",
+		"imgurl" : "http://www.hyundaenews.com/imgdata/hyundaenews_com/201601/2016011932479902.jpg",
+		"peoplelist" : [
+				"문재인 (文在寅)",
+				"1953년 1월 24일 (64세)",
+				"대한민국 경상남도 거제시 거제면",
+				"경희대학교 법학 학사",
+				"더불어민주당"
+		]
+	},
+	{
+		"title" : "안희정",
+		"imgurl" : "http://city777.kr/wp-content/uploads/2017/02/anhj.jpg",
+		"peoplelist" : [
+				"안희정 (安熙正)",
+				"1965년 5월 1일",
+				"대한민국 충청남도 논산군 연무읍",
+				"고려대학교 철학 학사",
+				"더불어민주당"
+		]
+	},
+	{
+		"title" : "안철수",
+		"imgurl" : "https://image-proxy.namuwikiusercontent.com/r/http%3A%2F%2Fimgnews.naver.net%2Fimage%2F056%2F2017%2F02%2F02%2F3421697_QO6_99_20170202115317.jpg",
+		"peoplelist" : [
+				"안철수 (安哲秀)",
+				"1962년 2월 26일",
+				"대한민국 경상남도 밀양시",
+				"펜실베이니아대학교 와튼스쿨 경영학 석사 (트럼프와 동문)",
+				"국민의당"
+		]
+	},
+	{
+		"title" : "이재명",
+		"imgurl" : "https://image-proxy.namuwikiusercontent.com/r/http%3A%2F%2Fph.kyeonggi.com%2Fnews%2Fphoto%2F201701%2F1302653_1200960_3307.jpg",
+		"peoplelist" : [
+				"이재명 (李在明)",
+				"1964년 10월 23일",
+				"대한민국 경상북도 안동시 예안면",
+				"한국방송통신대학교 영문학과 재학 중",
+				"더불어민주당"
+		]
+	}
+]
