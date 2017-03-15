@@ -29,4 +29,5 @@ Repository About CodeSquad Blue Level ( Web Front-end Programming )
 - [지옥에서 온 Git](https://opentutorials.org/course/2708)
 
 ## 일자별 학습내용
-- 170313 : 오리엔테이션, Git, Javascript DOM 조작
+- 170313(월) : 오리엔테이션, Git, Javascript DOM 조작
+- 170314(화) : 네이버 뉴스캐스트 기능 일부 구현(DOM조작, Event, Ajax)
