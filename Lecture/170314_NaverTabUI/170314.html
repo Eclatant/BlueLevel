@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>people</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="170314.css">
+  </head>
+
+  <body>
+    <div class="wrap">
+      <header>
+        <ul class="memberBar">
+          <li class="allMember">전체 대선후보</li>
+          <span class="bar"></span>
+          <li class="president">Oh! My Captain!</li>
+        </ul>
+        <div class="btn arrow">
+          <div class="left"><button><a href="#"><</a></button></div>
+          <div class="right"><button><a href="#">></a></button></div>
+        </div>
+      </header>
+
+      <section class="mainArea">
+
+        <nav class="navList">
+          <li>
+          </li>
+        </nav>
+
+        <section class="content">
+        </section>
+
+      </section>
+    </div>
+
+    <script type="text/x-handlebars-template" id="peopleTemplate">
+      <h4 class="title">
+          <span class="peopleName">{title}</span> <button class="XButton"><a href="#">X</a></button>
+          <!-- <span class="peopleName">{{title}}</span> <button class="XButton"><a href="#">X</a></button> -->
+      </h4>
+      <div class="peoplelist">
+          <img src={imgurl}>
+          <!-- <img src={{imgurl}}> -->
+          <li>
+            {peoplelist}
+            <!-- {{#each peoplelist}}
+              <ul>{{this}}</ul>
+            {{/each}} -->
+          </li>
+      </div>
+    </script>
+
+    <script src="170314.js"></script>
+  </body>
+</html>

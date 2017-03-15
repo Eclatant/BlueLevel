@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>people</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.js"></script>
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+      div,header,ul,li,section,nav,footer,h1,h2,h3,h4 {margin:0;padding:0;}
+      li { list-style: none; }
+      a { text-decoration: none;}
+
+      * { font-family: 'Spoqa Han Sans', 'Sans-serif'; }
+
+      header,.mainArea > nav, .mainArea > .content, .peopleList > ul{
+        padding:10px;
+        border: 1px solid #cccaca;
+      }
+
+      .wrap{
+        width:800px;
+        margin: 150px auto 0px;
+      }
+
+      .wrap,nav,.content {
+        height: 220px;
+      }
+
+      header {
+        overflow: auto;
+        border-bottom: 0;
+      }
+
+      header > ul{
+        float:left;
+      }
+
+      header > ul > li {
+        display: inline-block;
+      }
+
+      header > .btn {
+        float: right;
+        font-size: 1.2rem;
+      }
+
+      .left, .right {
+        display: inline-block;
+      }
+
+      .left {
+        margin-right: 10px;
+      }
+
+      .mainArea {
+        clear:both;
+        overflow: auto;
+      }
+
+      nav, .content , .peopleList > ul{
+        float: left;
+        box-sizing: border-box;
+      }
+
+      nav {
+        width:200px;
+        border-right: 0;
+      }
+
+      .content {
+        width:600px;
+        overflow: auto;
+      }
+
+      .content > h4 {
+        height: 26px;
+      }
+
+      .peopleList > img, .peopleList > ul{
+        float: left;
+      }
+
+      .peopleList > img {
+        width : 30%;
+      }
+
+      .peopleList > ul {
+        margin-left:2%;
+        width : 68%;
+      }
+
+      .peopleList > img, .peopleList > ul  {
+        height: 150px;
+        margin: 10px;
+      }
+
+      .peopleList ul li {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 12px;
+      }
+      .bar {
+        display: inline-block;
+        margin: 2px 5px 0;
+        width: 1px;
+        height: 15px;
+        background-color: #ebeef3;
+      }
+    </style>
+  </head>
+
+  <body>
+    {{{body}}}
+  </body>
+</html>
