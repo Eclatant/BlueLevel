@@ -1,3 +1,6 @@
+// TODO: 동일 작업을 줄여볼 수 있도록 캐싱을 하든, 중복을 없애든 하고,
+// TODO: 콜백을 밖으로 빼낼 것
+
 function loadContent() {
   function $(target) {
     return document.querySelector(target);
