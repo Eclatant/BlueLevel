@@ -1,0 +1,109 @@
+div,header,ul,li,section,nav,footer,h1,h2,h3,h4 {margin:0;padding:0;}
+li { list-style: none; }
+a { text-decoration: none;}
+
+* { font-family: 'Spoqa Han Sans', 'Sans-serif'; }
+
+header,.mainArea > nav, .mainArea > .content, .peoplelist > ul{
+  padding:10px;
+  border: 1px solid #cccaca;
+}
+
+.wrap{
+  width:800px;
+  margin: 150px auto 0px;
+}
+
+.wrap,nav,.content {
+  height: 220px;
+}
+
+header {
+  overflow: auto;
+  border-bottom: 0;
+}
+
+header > ul{
+  float:left;
+}
+
+header > ul > li {
+  display: inline-block;
+}
+
+header > div > li {
+  display: inline-block;
+  font-size: 1.0rem;
+}
+
+header > .btn {
+  float: right;
+  font-size: 1.2rem;
+}
+
+.left, .right {
+  display: inline-block;
+}
+
+.left {
+  margin-right: 10px;
+}
+
+.mainArea {
+  clear:both;
+  overflow: auto;
+}
+
+nav, .content , .peoplelist > ul{
+  float: left;
+  box-sizing: border-box;
+}
+
+nav {
+  width:200px;
+  border-right: 0;
+}
+
+.content {
+  width:600px;
+  overflow: auto;
+}
+
+.content > h4 {
+  height: 26px;
+}
+
+.peoplelist > img, .peoplelist > ul{
+  float: left;
+}
+
+.peoplelist > img {
+  width : 30%;
+}
+
+.peoplelist > ul {
+  margin-left:2%;
+  width : 68%;
+}
+
+.peoplelist > img, .peoplelist > ul  {
+  height: 150px;
+  margin: 10px;
+}
+
+.peoplelist ul li {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+.bar {
+  display: inline-block;
+  margin: 2px 5px 0;
+  width: 1px;
+  height: 15px;
+  background-color: #ebeef3;
+}
+.highlight {
+  color: green;
+  font-weight: bold;
+}
