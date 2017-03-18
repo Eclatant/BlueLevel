@@ -6,7 +6,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>people</title>
-    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <!-- <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'> -->
+    <script>
+    window.WebFontConfig = {
+        custom: {
+            families: ['Spoqa Han Sans:100,300,400,700'],
+            urls: ['https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css']
+        },
+        timeout: 60000
+    };
+    (function(d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+        s.parentNode.insertBefore(wf, s);
+    })(document);
+    </script>
     <link rel="stylesheet" href="170316.css">
   </head>
 
@@ -21,8 +35,8 @@
         <div class="btn arrow">
           <li class="status"></li>
           <span class="bar"></span>
-          <div class="left"><button><a href="#"><</a></button></div>
-          <div class="right"><button><a href="#">></a></button></div>
+          <div class="left"><button><a href="#">&#xE000;</a></button></div>
+          <div class="right"><button><a href="#">&#xE001;</a></button></div>
         </div>
       </header>
 
@@ -42,17 +56,10 @@
     <script type="text/x-handlebars-template" id="peopleTemplate">
       <h4 class="title">
           <span class="peopleName">{name}</span> <button class="XButton"><a href="#">X</a></button>
-          <!-- <span class="peopleName">{{title}}</span> <button class="XButton"><a href="#">X</a></button> -->
       </h4>
       <div class="peoplelist">
           <img src={imgurl}>
-          <!-- <img src={{imgurl}}> -->
-          <li>
-            {peoplelist}
-            <!-- {{#each peoplelist}}
-              <ul>{{this}}</ul>
-            {{/each}} -->
-          </li>
+          {peoplelist}
       </div>
     </script>
 

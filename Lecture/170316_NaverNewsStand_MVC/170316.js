@@ -149,8 +149,6 @@ View.prototype = {
     const dataLength = modelCache.returnDataLength();
     const randomNumber = Math.floor(Math.random() * dataLength);
 
-    const max = document.querySelectorAll(".navList > ul > ul").length;
-
     templateCache.secondTemplate.draw(nameList);
     templateCache.thirdTemplate.draw(allData[randomNumber]);
     templateCache.secondTemplate.highlight(randomNumber);
@@ -160,8 +158,9 @@ View.prototype = {
   showPresident: function() {
     const modelCache = this.model.prototype;
     const templateCache = this.template.prototype;
+    const max = document.querySelectorAll(".navList > ul > li").length;
 
-    if (document.querySelectorAll(".navList > ul > ul").length === 0) { return; }
+    if (max === 0) { return; }
 
     const dataLength = modelCache.returnDataLength();
     const allData = modelCache.returnPeopleData("all");

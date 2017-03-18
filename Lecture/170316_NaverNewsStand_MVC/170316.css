@@ -10,11 +10,11 @@ header,.mainArea > nav, .mainArea > .content, .peoplelist > ul{
 }
 
 .wrap{
-  width:800px;
+  width: 762px;
   margin: 150px auto 0px;
 }
 
-.wrap,nav,.content {
+.wrap, nav, .content {
   height: 220px;
 }
 
@@ -37,8 +37,9 @@ header > div > li {
 }
 
 header > .btn {
+  position: relative;
   float: right;
-  font-size: 1.2rem;
+  font-size: 1.0rem;
 }
 
 .left, .right {
@@ -54,47 +55,50 @@ header > .btn {
   overflow: auto;
 }
 
-nav, .content , .peoplelist > ul{
+nav {
   float: left;
   box-sizing: border-box;
+  width: 112px;
+  border-right: 0;
+  height: 280px;
 }
 
-nav {
-  width:200px;
-  border-right: 0;
+.navList ul li {
+  font-size: 16px;
+  text-align: center;
 }
 
 .content {
-  width:600px;
+  float: left;
+  box-sizing: border-box;
+  width: 650px;
+  height: 280px;
   overflow: auto;
 }
 
 .content > h4 {
   height: 26px;
+  margin: 0 10px;
 }
 
-.peoplelist > img, .peoplelist > ul{
+.peoplelist > img{
   float: left;
+  margin: 5px 10px;
+  width: 30%;
+  min-width: 200px;
+  height: 200px;
 }
 
-.peoplelist > img {
-  width : 30%;
-}
-
-.peoplelist > ul {
-  margin-left:2%;
-  width : 68%;
-}
-
-.peoplelist > img, .peoplelist > ul  {
-  height: 150px;
-  margin: 10px;
+.peoplelist ul{
+  float: left;
+  box-sizing: border-box;
+  width : 70%;
+  height: 200px;
 }
 
 .peoplelist ul li {
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 12px;
 }
 .bar {
   display: inline-block;
