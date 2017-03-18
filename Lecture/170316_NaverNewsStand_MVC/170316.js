@@ -28,9 +28,9 @@
 // -> innerHTML은 덮어쓰기된다
 
 const env = {
-  jsonUrl : "peoplelist170316.json",
+  jsonUrl: "peoplelist170316.json",
   // 유시민은 대선 후보가 아니지만, 좋으니까 특별출연
-  president : "유시민"
+  president: "유시민"
 };
 
 function Model() { this.data = []; }
@@ -39,6 +39,8 @@ function View(model, template) {
   this.model = model;
   this.template = template;
 }
+
+const oReq = new XMLHttpRequest();
 
 document.addEventListener("DOMContentLoaded", () => {
   const model = Object.create(Model);
@@ -51,8 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function $(target) { return document.querySelector(target); }
 
-const oReq = new XMLHttpRequest();
-
 Model.prototype = {
   // Ajax로 받아온 Data를 Array에 담아주는 메소드
   ajaxToData: function(inputData) {
@@ -64,22 +64,17 @@ Model.prototype = {
   },
   // 데이터중에서 이름 속성만 모아서 리턴
   returnNameList: function() {
-    acc = [];
-    this.data.forEach((v, i, o) => {
-      acc.push(v.name);
-    })
-    return acc;
+    return this.data.map((v, i, o) => v.name);
   },
   // 전체 또는 한 명의 데이터만 리턴
   returnPeopleData: function(req) {
-    if (req === "all") { return this.data; }
-    else { return this.data[req]; }
+    return req === "all" ? this.data : this.data[req];
   },
   // 현재 Array에 담긴 데이터 개수를 리턴
   returnDataLength: function() {
     return this.data.length;
   }
-}
+};
 
 Template.prototype = {
   // 상단 우측 상태표시를 위한 템플릿
@@ -95,11 +90,11 @@ Template.prototype = {
       let nameList = "";
       data.forEach((element) => {
         nameList += `<li>${element}</li>`;
-      })
+      });
       $("nav > ul").innerHTML = nameList;
     },
     erase: (number) => {
-      $(".navList > ul").childNodes[number].remove()
+      $(".navList > ul").childNodes[number].remove();
     },
     // 후보 이름에 녹색 글씨 효과
     highlight: (number) => {
@@ -116,7 +111,7 @@ Template.prototype = {
 
       data.peoplelist.forEach((element) => {
         peopleData += `<li>${element}</li>`;
-      })
+      });
 
       readyMadeTemplate = readyMadeTemplate.replace("{peoplelist}", peopleData).replace("{name}", `${data.name}`).replace("{imgurl}", `${data.imgurl}`);
       $(".content").innerHTML = readyMadeTemplate;
@@ -126,7 +121,7 @@ Template.prototype = {
       $(".content > .peoplelist").remove();
     }
   }
-}
+};
 
 View.prototype = {
   // 전체대선후보 클릭시 발동할 메소드
@@ -181,13 +176,13 @@ View.prototype = {
     templateCache.secondTemplate.draw(arr);
 
     const presidentNumber = this.getSelectedNumber(env.president);
-    const presidentData = modelCache.returnPeopleData(presidentNumber)
+    const presidentData = modelCache.returnPeopleData(presidentNumber);
     templateCache.secondTemplate.highlight(presidentNumber);
     templateCache.thirdTemplate.draw(presidentData);
     templateCache.firstTemplate.draw(presidentNumber, modelCache.returnDataLength());
   },
   // 현재 후보가 데이터에서 몇 번째 후보인지 알려주는 메소드
-  getSelectedNumber: function (peopleName) {
+  getSelectedNumber: function(peopleName) {
     const modelCache = this.model.prototype;
     const allData = modelCache.returnPeopleData("all");
     for (let i = 0, max = allData.length; i < max; i++) {
@@ -251,11 +246,11 @@ View.prototype = {
     // Captain 클릭
     $(".president").addEventListener("click", this.showPresident.bind(this));
     // 화살표 클릭시 작동할 코드
-    $(".arrow").addEventListener("click", (evt) => this.arrowSlide(evt));
+    $(".arrow").addEventListener("click", (evt) => { this.arrowSlide(evt); });
     // X버튼 클릭시 작동할 코드
-    $(".content").addEventListener("click", (evt) => this.XButton(evt));
+    $(".content").addEventListener("click", (evt) => { this.XButton(evt); });
     // 이름 클릭시 작동할 코드
-    $(".navList").addEventListener("click", (evt) => this.nameSelect(evt));
+    $(".navList").addEventListener("click", (evt) => { this.nameSelect(evt); });
 
     // Ajax 통신완료 후 작동할 초기화 메소드
     oReq.addEventListener("load", (evt) => {
@@ -270,6 +265,6 @@ View.prototype = {
       templateCache.thirdTemplate.draw(modelCache.returnPeopleData(randomNumber));
       templateCache.secondTemplate.highlight(randomNumber);
       templateCache.firstTemplate.draw(randomNumber, modelCache.returnDataLength());
-    })
+    });
   }
-}
+};
