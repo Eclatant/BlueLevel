@@ -46,12 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const model = Object.create(Model);
   const template = Object.create(Template);
   const view = new View(model, template);
+
+  modelCache = model.prototype;
+  templateCache = template.prototype;
   view.eventListen(); // 이벤트 리스닝 설정
   oReq.open("GET", env.jsonUrl); // 요청 설정
   oReq.send(); // 서버에게 요청하는 순간
 });
 
-function $(target) { return document.querySelector(target); }
+function $$(target) { return document.querySelector(target); }
 
 Model.prototype = {
   // Ajax로 받아온 Data를 Array에 담아주는 메소드
@@ -81,7 +84,7 @@ Template.prototype = {
   firstTemplate: {
     // Length와 Index간의 차이값(1) 보정
     draw: (number, length) => {
-      $(".status").innerHTML = `${number + 1} / ${length}`;
+      $$(".status").innerHTML = `${number + 1} / ${length}`;
     }
   },
   // 좌측의 후보 명단과 관련한 템플릿
@@ -91,22 +94,22 @@ Template.prototype = {
       data.forEach((element) => {
         nameList += `<li>${element}</li>`;
       });
-      $("nav > ul").innerHTML = nameList;
+      $$("nav > ul").innerHTML = nameList;
     },
     erase: (number) => {
-      $(".navList > ul").childNodes[number].remove();
+      $$(".navList > ul").childNodes[number].remove();
     },
     // 후보 이름에 녹색 글씨 효과
     highlight: (number) => {
-      const highlightedNode = $(".highlight");
+      const highlightedNode = $$(".highlight");
       if (highlightedNode !== null) { highlightedNode.classList.remove("highlight"); }
-      $(".navList > ul").childNodes[number].classList.add("highlight");
+      $$(".navList > ul").childNodes[number].classList.add("highlight");
     }
   },
   // 우측의 후보 정보를 보여주는 템플릿
   thirdTemplate: {
     draw: (data) => {
-      let readyMadeTemplate = $("#peopleTemplate").innerHTML;
+      let readyMadeTemplate = $$("#peopleTemplate").innerHTML;
       let peopleData = "";
 
       data.peoplelist.forEach((element) => {
@@ -114,11 +117,11 @@ Template.prototype = {
       });
 
       readyMadeTemplate = readyMadeTemplate.replace("{peoplelist}", peopleData).replace("{name}", `${data.name}`).replace("{imgurl}", `${data.imgurl}`);
-      $(".content").innerHTML = readyMadeTemplate;
+      $$(".content").innerHTML = readyMadeTemplate;
     },
     erase: () => {
-      $(".content .peopleName").remove();
-      $(".content > .peoplelist").remove();
+      $$(".content .peopleName").remove();
+      $$(".content > .peoplelist").remove();
     }
   }
 };
@@ -126,9 +129,6 @@ Template.prototype = {
 View.prototype = {
   // 전체대선후보 클릭시 발동할 메소드
   showAllMembers: function() {
-    const modelCache = this.model.prototype;
-    const templateCache = this.template.prototype;
-
     let currentDataLength = modelCache.returnDataLength();
 
     // 기존에 담겨있는 데이터를 모두 지우는 과정
@@ -151,8 +151,6 @@ View.prototype = {
   },
   // "Oh! My Captain!" 클릭시 유시민만 보여지도록 하는 메소드
   showPresident: function() {
-    const modelCache = this.model.prototype;
-    const templateCache = this.template.prototype;
     const max = document.querySelectorAll(".navList > ul > li").length;
 
     if (max === 0) { return; }
@@ -183,18 +181,16 @@ View.prototype = {
   },
   // 현재 후보가 데이터에서 몇 번째 후보인지 알려주는 메소드
   getSelectedNumber: function(peopleName) {
-    const modelCache = this.model.prototype;
     const allData = modelCache.returnPeopleData("all");
+
+    // [].indexOf.call($$(".navList > ul").childNodes, this);
     for (let i = 0, max = allData.length; i < max; i++) {
       if (allData[i].name === peopleName) { return i; }
     }
   },
   // 화살표 클릭시 앞 또는 뒤로 화면을 변경해주는 메소드
   arrowSlide: function(evt) {
-    const modelCache = this.model.prototype;
-    const templateCache = this.template.prototype;
-
-    let number = this.getSelectedNumber($(".peopleName").innerText);
+    let number = this.getSelectedNumber($$(".peopleName").innerText);
 
     if (document.querySelectorAll(".navList > ul > ul").length === 1) { return; }
     else if (number === 0 && evt.target.parentNode.parentNode.className === "left") { number = modelCache.returnDataLength() - 1; }
@@ -208,12 +204,9 @@ View.prototype = {
   },
   // X버튼 클릭시 해당 후보가 사라지는 메소드
   XButton: function(evt) {
-    const modelCache = this.model.prototype;
-    const templateCache = this.template.prototype;
-
     if (evt.target.innerText !== "X") { return; }
 
-    let number = this.getSelectedNumber($(".peopleName").innerText);
+    let number = this.getSelectedNumber($$(".peopleName").innerText);
     modelCache.deleteData(number);
     templateCache.secondTemplate.erase(number);
 
@@ -231,8 +224,6 @@ View.prototype = {
   },
   // 이름 선택시 해당 후보를 보여주는 메소드
   nameSelect: function(evt) {
-    const modelCache = this.model.prototype;
-    const templateCache = this.template.prototype;
     const number = this.getSelectedNumber(evt.target.innerText);
 
     templateCache.thirdTemplate.draw(modelCache.returnPeopleData(number));
@@ -242,22 +233,21 @@ View.prototype = {
   // 이벤트 리스닝용 메소드
   eventListen: function() {
     // 전체 대선후보 클릭
-    $(".allMember").addEventListener("click", this.showAllMembers.bind(this));
+    $$(".allMember").addEventListener("click", this.showAllMembers.bind(this));
     // Captain 클릭
-    $(".president").addEventListener("click", this.showPresident.bind(this));
+    $$(".president").addEventListener("click", this.showPresident.bind(this));
     // 화살표 클릭시 작동할 코드
-    $(".arrow").addEventListener("click", (evt) => { this.arrowSlide(evt); });
+    $$(".arrow").addEventListener("click", (evt) => { this.arrowSlide(evt); });
     // X버튼 클릭시 작동할 코드
-    $(".content").addEventListener("click", (evt) => { this.XButton(evt); });
+    $$(".content").addEventListener("click", (evt) => { this.XButton(evt); });
     // 이름 클릭시 작동할 코드
-    $(".navList").addEventListener("click", (evt) => { this.nameSelect(evt); });
+    $$(".navList").addEventListener("click", (evt) => { this.nameSelect(evt); });
 
     // Ajax 통신완료 후 작동할 초기화 메소드
     oReq.addEventListener("load", (evt) => {
-      const modelCache = this.model.prototype;
-      const templateCache = this.template.prototype;
+      // const modelCache = this.model.prototype;
+      // const templateCache = this.template.prototype;
       const jsonData = JSON.parse(oReq.responseText);
-
       this.model.prototype.ajaxToData(jsonData);
       const randomNumber = Math.floor(Math.random() * modelCache.returnDataLength());
 
