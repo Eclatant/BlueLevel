@@ -30,4 +30,9 @@ Repository About CodeSquad Blue Level ( Web Front-end Programming )
 
 ## 일자별 학습내용
 - 170313(월) : 오리엔테이션, Git, Javascript DOM 조작
-- 170314(화) : 네이버 뉴스캐스트 기능 일부 구현(DOM조작, Event, Ajax)
+- 170314(화) : 네이버 뉴스스탠드 기능 일부 구현(DOM조작, Event, Ajax)
+- 170315(수) : Scope(let, const), Closure, Object
+- 170316(목) : 뉴스스탠드 객체지향(+MVC)으로 재설계
+- 170317(금) : 뉴스스탠드 코드리뷰
+- 170320(월) : 뉴스스탠드 코드리뷰
+- 170321(화) : Git, LESS, CSS
